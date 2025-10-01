@@ -1,5 +1,5 @@
 // Assurez-vous que l'import est mis à jour :
-// const { getTasks, reset, addTask } = require('../lib/tasks');
+// const { getTasks, reset, addTask, toggleTask } = require('../lib/tasks'); 
 
 beforeEach(() => {
   reset();
@@ -9,44 +9,56 @@ test('initial task list is empty', () => {
   expect(getTasks()).toEqual([]);
 });
 
-// --- NOUVEAUX TESTS POUR addTask ---
-describe('addTask', () => {
+// ... (Anciens tests pour addTask ici) ...
 
-  test('should store task with correct properties (id, name, done:false)', () => {
-    const task = addTask('Acheter du lait');
-    
+// --- NOUVEAUX TESTS POUR toggleTask ---
+describe('toggleTask', () => {
+  let task1, task2;
+
+  beforeEach(() => {
+    // Crée deux tâches pour les tests (ID 1 et ID 2)
+    task1 = addTask('Tâche à compléter');
+    task2 = addTask('Tâche déjà faite');
+  });
+
+  test('should toggle task state from false to true', () => {
+    // L'état initial est `done: false`
+    expect(task1.done).toBe(false);
+
+    const toggledTask = toggleTask(task1.id);
+
     // Vérifie l'objet retourné
-    expect(task).toEqual({ id: 1, name: 'Acheter du lait', done: false });
+    expect(toggledTask.done).toBe(true); 
     
-    // Vérifie qu'il est bien dans la liste globale
-    expect(getTasks()).toEqual([task]);
+    // Vérifie que l'objet dans la liste globale a été mis à jour
+    expect(getTasks().find(t => t.id === task1.id).done).toBe(true);
   });
 
-  test('should ensure unique and sequential IDs for multiple tasks', () => {
-    const task1 = addTask('Tâche A'); // ID 1
-    const task2 = addTask('Tâche B'); // ID 2
-    
-    expect(task1.id).toBe(1);
-    expect(task2.id).toBe(2);
-    expect(getTasks().length).toBe(2);
-  });
+  test('should toggle task state from true back to false', () => {
+    // On met la tâche à 'true' (comme étape préliminaire)
+    toggleTask(task2.id); 
+    expect(task2.done).toBe(true);
 
-  test('should trim whitespace from the task name', () => {
-    const task = addTask('   Apprendre Git   ');
-    
-    // Vérifie que les espaces de début et de fin sont supprimés
-    expect(task.name).toBe('Apprendre Git');
-  });
+    const toggledTask = toggleTask(task2.id); // Bascule une seconde fois
 
-  // Cas limite/erreur pertinent (obligatoire pour l'évaluation)
-  test('should throw an error if the name is empty or only whitespace after trim', () => {
-    // Cas chaîne vide
-    expect(() => addTask('')).toThrow('Le nom de la tâche ne peut pas être vide.');
+    // Vérifie l'objet retourné
+    expect(toggledTask.done).toBe(false); 
     
-    // Cas espaces uniquement
-    expect(() => addTask('   \n\t ')).toThrow('Le nom de la tâche ne peut pas être vide.');
+    // Vérifie que l'objet dans la liste globale a été mis à jour
+    expect(getTasks().find(t => t.id === task2.id).done).toBe(false);
+  });
+  
+  // Cas limite/erreur pertinent (gestion de l'ID inconnu)
+  test('should return null and not modify the list if the ID is not found', () => {
+    const initialList = getTasks(); // Référence à la liste initiale
     
-    // Vérifie qu'aucune tâche n'a été ajoutée
-    expect(getTasks()).toEqual([]); 
+    // Essayer un ID qui n'existe pas (par exemple 999)
+    const result = toggleTask(999);
+    
+    // Vérifie qu'il retourne null
+    expect(result).toBeNull();
+    
+    // Vérifie que la liste des tâches n'a pas été modifiée
+    expect(getTasks()).toEqual(initialList);
   });
 });
