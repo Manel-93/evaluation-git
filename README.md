@@ -10,7 +10,7 @@ Différence entre git checkout et git switch:
     Git checkout = utilisé pour changer de branches ou restaurer des fichiers de travail.
     Git switch = déplacement de branches, utilisé pour naviguer entre les branches.
 
-    git fetch = Téléchage les nouvelles informations et ne modifie pas la branche de travail.
+    git fetch = Télécharge les nouvelles informations et ne modifie pas la branche de travail.
     git pull = Télécharge les nouvelles informations et modifie la branche en y fusionnant les changements distants.
 
     git rebase : Déplace une séquence de commits sur un nouveau commit de base. Faire attetion pour les branches partagées.
