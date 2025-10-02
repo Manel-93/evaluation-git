@@ -21,11 +21,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: eval-git-ci-js-base
+        working-directory: gitcidevaA/eval-git-ci-js-base
 
       - name: Run tests
         run: npm test 
-        working-directory: eval-git-ci-js-base
+        working-directory: gitcidevaA/eval-git-ci-js-base
 
       - name: Create reports folder
         run: mkdir -p gitcidevaA/eval-git-ci-js-base/reports
