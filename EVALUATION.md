@@ -15,6 +15,8 @@ Liens des PR:
 https://github.com/Manel-93/evaluation-git/pull/3
 https://github.com/Manel-93/evaluation-git/pull/2
 https://github.com/Manel-93/evaluation-git/pull/1
-![alt text](image-1.png)
 
-Resolution d'un merge conflict.
+
+Resolution d'un merge conflict : modificaton de la ligne "module exports" dans le fichier tasks.js (suppression de la fonction countdone). Résolution du merge conflict et pull request voir images sur VS CODE. 
+
+
