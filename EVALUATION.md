@@ -15,6 +15,6 @@ Liens des PR:
 https://github.com/Manel-93/evaluation-git/pull/3
 https://github.com/Manel-93/evaluation-git/pull/2
 https://github.com/Manel-93/evaluation-git/pull/1
-![alt text](image-1.png)
+
 
 Resolution d'un merge conflict.
