@@ -71,4 +71,4 @@ function countDone() {
 }
 
 
-module.exports = { getTasks, reset, addTask, toggleTask, countDone }; // N'oubliez pas l'export !
+module.exports = { getTasks, reset, addTask, toggleTask}; // N'oubliez pas l'export !
