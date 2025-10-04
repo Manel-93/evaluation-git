@@ -13,6 +13,8 @@ function reset() {
   nextId = 1;
 }
 
+// ... (Les fonctions addTask et toggleTask restent inchangées) ...
+
 /**
  * Ajoute une nouvelle tâche à la liste.
  * @param {string} name - Le nom de la tâche.
@@ -47,21 +49,16 @@ function addTask(name) {
  * @returns {object | null} La tâche modifiée, ou null si l'ID n'est pas trouvé.
  */
 function toggleTask(id) {
-    // Convertir l'ID en nombre pour une comparaison stricte
     const taskId = Number(id);
 
-    // 1. Trouver la tâche par son ID
     const task = tasks.find(t => t.id === taskId);
 
     if (task) {
-        // 2. Basculer son statut 'done'
         task.done = !task.done;
         return task;
     }
-
-    // 3. Retourner null si la tâche n'est pas trouvée
     return null;
 }
 
 
-module.exports = { getTasks, reset, addTask, countDone }; 
+module.exports = { getTasks, reset, addTask, toggleTask, countDone };
