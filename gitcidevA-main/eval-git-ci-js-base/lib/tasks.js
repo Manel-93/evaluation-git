@@ -64,4 +64,4 @@ function toggleTask(id) {
 }
 
 
-module.exports = { getTasks, reset, addTask, toggleTask }; // N'oubliez pas l'export !
+module.exports = { getTasks, reset, addTask, countDone }; 
