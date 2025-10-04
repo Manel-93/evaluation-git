@@ -60,15 +60,5 @@ function toggleTask(id) {
     return null;
 }
 
-/**
- * Compte le nombre de tâches marquées comme 'faites' (done: true).
- * @returns {number} Le nombre total de tâches complétées.
- */
-function countDone() {
-    // Utilise la méthode filter pour obtenir seulement les tâches faites,
-    // puis retourne la longueur du tableau résultant.
-    return tasks.filter(tache => tache.done === true).length;
-}
 
-
-module.exports = { getTasks, reset, addTask, toggleTask, countDone }; // N'oubliez pas l'export !
+module.exports = { getTasks, reset, addTask, toggleTask, countDone };
